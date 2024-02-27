@@ -1,35 +1,28 @@
 "use client";
-import Image from "next/image";
-
+import { Line } from 'react-chartjs-2';
+import { useState } from 'react';
 export default function Home() {
-  const rows = 15
-  const cols = 40
+  let array = []
 
-  const trigger = (row, col) => {
-    console.log(row, col)
+  for (let i = 0; i <= 10; i++) {
+    array.push(Math.floor(Math.random() * 100))
   }
+  console.log(array)
+  
+  const [newarray, setNewarray] = useState({
+    labels: array,
+    datasets: [
+      {
+        label: "Sort",
+        data: array
+      }
+    ]
+  });
+
   return (
-
-
-
-    <div className="p-6">
-      <p className="text-2xl py-5">Pathfinding visualizer</p>
-      <table className="border p-4">
-        <tbody>
-          {Array.from({ length: rows }).map((_, rowIndex) => (
-            <tr key={rowIndex}>
-              {Array.from({ length: cols }).map((_, colIndex) => (
-                <td
-                  key={`${rowIndex}-${colIndex}`}
-                  className="p-4 border border-slate-600 border-spacing-1"
-                  onClick={() => trigger(rowindex, colIndex)}
-                >
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div>
+      <p>Hello world</p>
+      <Line data={newarray}/>
     </div>
   );
 }
