@@ -1,7 +1,7 @@
 "use client";
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 const chartOptions = {
@@ -25,28 +25,24 @@ export default function Home() {
     ]
   });
   
-  const generateNewArray = (e) => {
-    let randomlist = []
-    for (let i = 0; i <= 10; i++) {
-      randomlist.push(Math.floor(Math.random() * 100))
-    }
-
-    setNewarray((p) => {
-      setNewarraydataset({
-        labels: randomlist,
-        datasets: [  
-          {
-            data: randomlist,
-          },
-        ],
-  
-      });
-      return randomlist;   
+  useEffect(() => {
+    setNewarraydataset({
+      labels: newarray,
+      datasets: [
+        {
+          data: newarray,
+        },
+      ],
     });
+  }, [newarray]);
 
-
-    console.log(newarray)
-  }
+  const generateNewArray = () => {
+    let randomlist = [];
+    for (let i = 0; i <= 10; i++) {
+      randomlist.push(Math.floor(Math.random() * 100));
+    }
+    setNewarray(randomlist);
+  };
   
   
   const selectionSort = () => {
