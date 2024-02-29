@@ -15,6 +15,7 @@ const chartOptions = {
 
 export default function Home() {
 
+  const length = 10
   const [newarray, setNewarray] = useState([0,0,0,0,0,0,0,0,0,0,0])
   const [newarraydataset, setNewarraydataset] = useState({
     labels: newarray,
@@ -45,9 +46,30 @@ export default function Home() {
   };
   
   
-  const selectionSort = () => {
+  const swap = (arr,xp, yp) =>  { 
+      let temp = arr[xp]; 
+      arr[xp] = arr[yp]; 
+      arr[yp] = temp; 
+  } 
+    
+  const selectionSort = () => { 
+    let i = 0
+    let j = 0
+    let min_idx = 0 
+    let arr = newarray
+  
+    for (i = 0; i < length - 1; i++) { 
+        min_idx = i; 
+        for (j = i + 1; j < length; j++) 
+        if (arr[j] < arr[min_idx]) 
+            min_idx =   j;  
+        setNewarray(arr)
+        swap(arr,min_idx, i); 
+        console.log(newarray)
+      } 
+    console.log("Final")
     console.log(newarray)
-  };
+  } 
 
 
   return (
