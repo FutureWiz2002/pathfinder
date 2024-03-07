@@ -26,25 +26,37 @@ export default function Home() {
     ]
   });
   
-  useEffect(() => {
-    setNewarraydataset({
-      labels: newarray,
-      datasets: [
-        {
-          data: newarray,
-        },
-      ],
-    });
-  }, [newarray]);
+  // useEffect(() => {
+  //   setNewarraydataset({
+  //     labels: newarray,kj
+  //     datasets: [
+  //       {
+  //         data: newarray,
+  //       },
+  //     ],
+  //   });
+  // }, [newarray]);
 
+  
   const generateNewArray = () => {
     let randomlist = [];
     for (let i = 0; i <= 10; i++) {
       randomlist.push(Math.floor(Math.random() * 100));
     }
-    setNewarray(randomlist);
+    
+    const setValueAndCallback = (newValue, callback) => {
+      setNewarray(prevValue => {
+          if (callback) {
+              callback(prevValue, newValue);
+          }
+          return newValue;
+      });
+    };
+    
+    console.log(newarray)
+    return [randomlist, setValueAndCallback]
   };
-  
+
   
   const swap = (arr,xp, yp) =>  { 
       let temp = arr[xp]; 
@@ -67,7 +79,6 @@ export default function Home() {
         swap(arr,min_idx, i); 
         console.log(newarray)
       } 
-    console.log("Final")
     console.log(newarray)
   } 
 
