@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 
 function App() {
@@ -9,7 +8,7 @@ function App() {
   return (
     <>
       <div>
-        <p>Watch me make the greatest dijstar's algorithm of all time</p>
+        <p>Watch me make the greatest dijstar's algorithm of all time, {count}</p>
       </div>
 
     </>
